@@ -33,9 +33,9 @@ with open("experiments_data.json", "r") as f:
 # Order to try: 'COBYLA', 'SLSQP', 'Powell', 'CG', 'Nelder-Mead', 'L-BFGS-B'
 
 classical_optimizer = "CMAES"
-lambda_budget = 0.01
+lambda_budget = 1
 
-output_file = f"portfolio_optimization_batch_{classical_optimizer}_001_{args.batch_num}.json"
+output_file = f"portfolio_optimization_arithmetic_batch_{classical_optimizer}_1_{args.batch_num}.json"
 
 # Find files with portfolio_optimization_results_batch_ in the name
 previous_output_files = [f for f in os.listdir() if f"portfolio_optimization_results_batch_{classical_optimizer}" in f]
@@ -88,7 +88,7 @@ for i, experiment in enumerate(experiments[start_idx:end_idx]):
     stocks = returns.columns
     numpy_returns = returns.to_numpy()
 
-    expected_returns = mean_historical_return(returns, returns_data=True).to_numpy()
+    expected_returns = mean_historical_return(returns, returns_data=True, compounding=False).to_numpy()
     covariance_matrix = sample_cov(returns, returns_data=True).to_numpy()
     coskewness_tensor = coskewness(numpy_returns)
     cokurtosis_tensor = cokurtosis(numpy_returns)
