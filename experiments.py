@@ -33,9 +33,9 @@ with open("experiments_data.json", "r") as f:
 # Order to try: 'COBYLA', 'SLSQP', 'Powell', 'CG', 'Nelder-Mead', 'L-BFGS-B'
 
 classical_optimizer = "CMAES"
-lambda_budget = 1
+lambda_budget = 0.1
 
-output_file = f"portfolio_optimization_arithmetic_batch_{classical_optimizer}_1_{args.batch_num}.json"
+output_file = f"portfolio_optimization_batch_{classical_optimizer}_{str(lambda_budget)}_{args.batch_num}.json"
 
 # Find files with portfolio_optimization_results_batch_ in the name
 previous_output_files = [f for f in os.listdir() if f"portfolio_optimization_results_batch_{classical_optimizer}" in f]

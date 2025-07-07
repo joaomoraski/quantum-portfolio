@@ -49,7 +49,7 @@ class HigherOrderPortfolioQAOA:
             # Each asset can be bought at most floor(bugdet/price_now) times
             # Thus, for each asset we have to choose the smallest N such that 2^N > floor(bugdet/price_now)    
             for asset in stocks:
-                N = int(np.ceil(np.log2(np.ceil(budget/prices_now[asset]))))
+                N = int(np.ceil(np.log2(np.floor(budget/prices_now[asset]))))
                 if N == 0:
                     N = 1
                 self.num_qubits_per_asset[asset] = N
