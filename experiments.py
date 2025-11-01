@@ -32,8 +32,8 @@ with open("experiments_data.json", "r") as f:
 #    'CMAES' (requires cma package to be installed)
 # Order to try: 'COBYLA', 'SLSQP', 'Powell', 'CG', 'Nelder-Mead', 'L-BFGS-B'
 
-classical_optimizer = "CMAES"
-lambda_budget = 0.001
+classical_optimizer = "COBYLA"
+lambda_budget = 1.0
 
 output_file = f"portfolio_optimization_batch_{classical_optimizer}_{str(lambda_budget)}_{args.batch_num}.json"
 
@@ -74,12 +74,12 @@ for i, experiment in enumerate(experiments[start_idx:end_idx]):
     
     print(f"Processing experiment {experiment_id}")
     results_for_experiment = {}
-    stocks = experiment["stocks"]
+    stocks = ["AAPL", "MSFT"]
     start = experiment["start"]
     end = experiment["end"]
     risk_aversion = 0.1
-    max_qubits = 15
-    budget = experiment["budget"]
+    max_qubits = 8
+    budget = 3000
     print(f"Budget: {budget}")
 
     data = yf.download(stocks, start=start, end=end)

@@ -708,7 +708,7 @@ class HigherOrderPortfolioQAOA:
             raise ValueError(f"Optimizer must be one of {valid_optimizers}")
         
         # Set maximum iterations based on problem size
-        maxiter = 10000
+        maxiter = 1000
         if self.n_qubits > 13:
             maxiter = 2500
         

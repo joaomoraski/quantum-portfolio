@@ -23,7 +23,7 @@ else
     echo "mkdir -p $WRKDIR/quantum-portfolio"
     echo "python -m venv $VENV_DIR"
     echo "source $VENV_DIR/bin/activate"
-    echo "pip install numpy scipy yfinance pycma pennylane PyPortfolioOpt"
+    echo "pip install numpy scipy yfinance cma pennylane PyPortfolioOpt"
     exit 1
 fi
 
